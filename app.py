@@ -21,8 +21,9 @@ tess.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 def main():
     st.title("AskMe")
 
-    question = st.text_input("Ask Question:")
     image_path = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
+    question = st.text_input("Ask Question:")
+    
 
     def gettext(image_path):
         try:
