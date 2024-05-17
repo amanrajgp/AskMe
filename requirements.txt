@@ -1,0 +1,8 @@
+streamlit
+Pillow
+pytesseract
+pyMuPDF
+langchain_google_genai 
+langchain
+PyPDF2
+opencv-python
