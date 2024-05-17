@@ -25,9 +25,10 @@ tess.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 def main():
     st.title("AskMe")
-
-    question = st.text_input("Ask Question:")
+    
     img_file_buffer = st.camera_input("Take a picture")
+    question = st.text_input("Ask Question:")
+    
 
     def gettext(img_file_buffer):
         if img_file_buffer is not None:
