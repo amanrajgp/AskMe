@@ -8,13 +8,14 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema.output_parser import StrOutputParser
 import asyncio
+	
 
 # Configure Google Generative AI
 google_api_key = "AIzaSyBoxsa2ARTumKvRL5wLEfRoKm4Xc6zoKq0"
 # genai.configure(api_key=google_api_key)
 
 # Setup the Tesseract executable path
-tess.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+tess.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 
 # Create the Google Generative AI model
 # Note: Ensure this uses a synchronous approach
@@ -25,10 +26,9 @@ tess.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 def main():
     st.title("AskMe")
-    
-    img_file_buffer = st.camera_input("Take a picture")
+
     question = st.text_input("Ask Question:")
-    
+    img_file_buffer = st.camera_input("Take a picture")
 
     def gettext(img_file_buffer):
         if img_file_buffer is not None:
@@ -46,13 +46,13 @@ def main():
             Role: As a contract generation specialist, your primary function is to analyze the provided Text {text} and answer the question {question} given by user.
 
             **Additional Instructions:**
-            *Give answer in details as much as possible.
+                *Give answer in details as much as possible.
 
             **Internet Use:**
-            *You may fetch information from the internet related to question to ensure relevance.
+                *You may fetch information from the internet related to question to ensure relevance.
 
             **Important**
-            * Do not provide any information if you are not able to find.
+    #           * Do not provide any information if you are not able to find.
             [/INSTRUCT]</s>
         """)
         model = ChatGoogleGenerativeAI(
