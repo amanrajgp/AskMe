@@ -13,7 +13,7 @@ google_api_key = "AIzaSyBoxsa2ARTumKvRL5wLEfRoKm4Xc6zoKq0"
 # genai.configure(api_key=google_api_key)
 
 # Setup the Tesseract executable path
-tess.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# tess.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 # Create the Google Generative AI model
 # Note: Ensure this uses a synchronous approach
