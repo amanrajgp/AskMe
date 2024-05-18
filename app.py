@@ -65,23 +65,12 @@ def main():
     image_path = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
     question = st.text_input("Ask Question:")
 
-    def preprocess_image(img):
-        # Convert image to grayscale
-        gray = img.convert('L')
-        
-        # Apply thresholding to binarize the image
-        binary = gray.point(lambda x: 0 if x < 128 else 255, '1')
-        
-        return binary
     
     def gettext(image_path):
         try:
             img = Image.open(image_path)
-            preprocessed_img = preprocess_image(img)
-
-            st.image(preprocessed_img, caption="Uploaded Image (Preprocessed)", use_column_width=True)  # Display the image
-            text = tess.image_to_string(preprocessed_img)
-            # text = tess.image_to_string(img)
+            
+            text = tess.image_to_string(img)
             return text
         except tess.TesseractNotFoundError:
             st.error("Tesseract OCR is not installed or found.")
