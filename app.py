@@ -12,7 +12,6 @@ google_api_key = "AIzaSyBoxsa2ARTumKvRL5wLEfRoKm4Xc6zoKq0"
 # Ensure pytesseract can find the tesseract executable
 # This step might not be necessary on Streamlit Cloud if tesseract is correctly installed and in the PATH
 tess.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-=
 
 
 # Define the main function
