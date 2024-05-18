@@ -53,7 +53,7 @@ def main():
         </style>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True)
         
     st.title("AskMe")
     info_expander = st.expander("Help")
