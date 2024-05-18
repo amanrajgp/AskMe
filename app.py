@@ -133,7 +133,7 @@ def main():
         return response
 
     if st.button("Go"):
-        if question and image_path:
+        if question and img_file_buffer:
             progress_bar=st.progress(0)
             text = gettext(image_path)
             progress_bar.progress(30)
