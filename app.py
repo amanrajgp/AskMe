@@ -59,10 +59,10 @@ def main():
     info_expander = st.expander("About Tool")
     with info_expander:
         st.markdown('''
-        AskMe is Your personal knowledge assistant powered by GenAI. 
-        Step 1: Upload an image
-        Step 2: Ask questions
-        Step 3: Receive insightful answers instantly!
+        AskMe is Your personal knowledge assistant powered by GenAI.\n
+        Step 1: Upload an image \n
+        Step 2: Ask questions \n
+        Step 3: Receive insightful answers instantly!\n
         ''')
     image_path = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
     question = st.text_input("Ask Question:")
