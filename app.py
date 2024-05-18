@@ -151,7 +151,7 @@ def main():
             st.error("Please provide both a question and an image.")
     st.markdown('<div class="header-container">', unsafe_allow_html=True)
     st.markdown('<div class="subsubheader">Developed by</div>', unsafe_allow_html=True)
-    st.image("image.png", width=100)
+    # st.image("image.png", width=100)
     st.markdown('<div class="name-header">Aman Raj</div>', unsafe_allow_html=True)
     st.markdown('<div class="subheader">Data Scientist</div>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
