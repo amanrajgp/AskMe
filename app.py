@@ -59,15 +59,16 @@ def main():
 
     if st.button("Go"):
         if question and image_path:
-            st.success("Generating...")
+            progress_bar=st.progress(0)
             text = gettext(image_path)
-
+            progress_bar.progress(30)
             if text:
                 # Run the asynchronous function and wait for the result
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
+                progress_bar.progress(70)
                 response = loop.run_until_complete(generate_response(text, question))
-
+                progress_bar.progress(100)
                 st.write("**Generated Response:**")
                 st.write(response)
             else:
