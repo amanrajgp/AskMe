@@ -135,7 +135,7 @@ def main():
     if st.button("Go"):
         if question and img_file_buffer:
             progress_bar=st.progress(0)
-            text = gettext(image_path)
+            text = gettext(img_file_buffer)
             progress_bar.progress(30)
             if text:
                 # Run the asynchronous function and wait for the result
