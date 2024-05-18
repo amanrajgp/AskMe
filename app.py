@@ -149,6 +149,12 @@ def main():
                 st.error("Failed to extract text from the image.")
         else:
             st.error("Please provide both a question and an image.")
+    st.markdown('<div class="header-container">', unsafe_allow_html=True)
+    st.markdown('<div class="subsubheader">Developed by</div>', unsafe_allow_html=True)
+    st.image("image.png", width=100)
+    st.markdown('<div class="name-header">Aman Raj</div>', unsafe_allow_html=True)
+    st.markdown('<div class="subheader">Data Scientist</div>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # Run the main function
 if __name__ == "__main__":
