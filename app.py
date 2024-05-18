@@ -56,11 +56,13 @@ def main():
         unsafe_allow_html=True)
         
     st.title("AskMe")
-    info_expander = st.expander("About")
+    info_expander = st.expander("About Tool")
     with info_expander:
         st.markdown('''
         AskMe is Your personal knowledge assistant powered by GenAI. 
-        Upload image,ask questions, and receive insightful answers instantly!
+        Step 1: Upload an image
+        Step 2: Ask questions
+        Step 3: Receive insightful answers instantly!
         ''')
     image_path = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
     question = st.text_input("Ask Question:")
