@@ -163,10 +163,10 @@ def main():
     # #     response = await chain.invoke({"text": text, "question": question})
     # #     return response
 
-    # if st.button("Go"):
-    #     if img_file_buffer:
-    #         st.success("Generating...")
-    #         text = gettext(img_file_buffer)
+    if st.button("Go"):
+        if img_file_buffer:
+            st.success("Generating...")
+            text = gettext(img_file_buffer)
             
             
 
