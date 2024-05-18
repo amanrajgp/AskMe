@@ -102,7 +102,8 @@ import asyncio
 google_api_key = "AIzaSyBoxsa2ARTumKvRL5wLEfRoKm4Xc6zoKq0"
 
 # Setup the Tesseract executable path
-tess.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+tess.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+
 
 # Define the main function
 def main():
