@@ -80,8 +80,9 @@ def main():
         Upload image,ask questions, and receive insightful answers instantly!
         ''')
 
-    question = st.text_input("Ask Question:")
     img_file_buffer = st.file_uploader("Upload a picture", type=["png", "jpg", "jpeg"])
+    question = st.text_input("Ask Question:")
+    
 
     def preprocess_image(img):
         # Convert image to grayscale
