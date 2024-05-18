@@ -56,7 +56,7 @@ def main():
         unsafe_allow_html=True)
         
     st.title("AskMe")
-    info_expander = st.expander("Help")
+    info_expander = st.expander("About")
     with info_expander:
         st.markdown('''
         AskMe is Your personal knowledge assistant powered by GenAI. 
