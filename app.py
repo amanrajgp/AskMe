@@ -22,20 +22,94 @@ tess.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 # Note: Ensure this uses a synchronous approach
 
 def main():
-    st.title("AskMe")
+    st.markdown(
+        """
+        <style>
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .name-header {
+            font-family: 'Raleway', sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .subheader {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .subsubheader {
+            font-family: 'Raleway', sans-serif;
+            font-size: 15px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        img {
+            align-self: center;
+            margin-left: 55vh;
+        }
 
-    image_path = st.file_uploader("Upload an Image", type=["png", "jpg", "jpeg"])
-    question = st.text_input("Ask Question:")
+        
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+        """,
+        unsafe_allow_html=True
+    )
+
     
 
-    def gettext(image_path):
-        try:
-            img = Image.open(image_path)
-            text = tess.image_to_string(img)
+    # Display the header with image and text
+    
+    
+    st.title("AskMe")
+    info_expander = st.expander("Help")
+    with info_expander:
+        st.markdown('''
+        AskMe is Your personal knowledge assistant powered by GenAI. 
+        Upload image,ask questions, and receive insightful answers instantly!
+        ''')
+
+    question = st.text_input("Ask Question:")
+    img_file_buffer = st.file_uploader("Upload a picture", type=["png", "jpg", "jpeg"])
+
+    def preprocess_image(img):
+        # Convert image to grayscale
+        gray = img.convert('L')
+        
+        # Apply thresholding to binarize the image
+        binary = gray.point(lambda x: 0 if x < 128 else 255, '1')
+        
+        return binary
+
+    def gettext(img_file_buffer):
+        if img_file_buffer is not None:
+            bytes_data = img_file_buffer.getvalue()
+            img = Image.open(io.BytesIO(bytes_data))  # Convert bytes to PIL Image
+
+            # Save the image to a file
+            img.save("captured_image.png")
+
+            # Preprocess the image
+            preprocessed_img = preprocess_image(img)
+
+            st.image(preprocessed_img, caption="Uploaded Image (Preprocessed)", use_column_width=True)  # Display the image
+            text = tess.image_to_string(preprocessed_img)
+            st.write("Text from uploaded image:")
+            st.write(text)
             return text
-        except tess.TesseractNotFoundError:
-            st.error("Tesseract OCR is not installed or found.")
-            return ""
+        else:
+            return None
 
     async def generate_response(text, question):
         prompt = ChatPromptTemplate.from_template("""
